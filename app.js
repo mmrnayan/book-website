@@ -58,5 +58,7 @@ onAuthStateChanged(auth, (user) => {
     } else {
         bookSection.style.display = "none";
         logoutBtn.style.display = "none";
+        alert("You must be logged in to access the book!");
     }
+    
 });

@@ -16,8 +16,38 @@
 
     <div id="book-section" style="display:none;">
         <h3>Welcome! You can now read the book.</h3>
-        <p>[Book content will be displayed here]</p>
+        <div id="book-content">
+            <p>This is a sample book content. You can add real book pages here.</p>
+        </div>
     </div>
+    
+    <script>
+        // Disable Right-Click
+        document.addEventListener("contextmenu", (e) => e.preventDefault());
+    
+        // Disable Ctrl+P (Print)
+        document.addEventListener("keydown", (e) => {
+            if (e.ctrlKey && (e.key === "p" || e.key === "s" || e.key === "u")) {
+                e.preventDefault();
+            }
+        });
+    
+        // Disable Screenshots (For some devices)
+        document.addEventListener("keyup", function (e) {
+            if (e.key === "PrintScreen") {
+                alert("Screenshots are disabled!");
+            }
+        });
+    
+        // Block Screen Recording
+        setInterval(() => {
+            navigator.mediaDevices.getDisplayMedia().then((stream) => {
+                stream.getTracks().forEach(track => track.stop());
+                alert("Screen recording is not allowed!");
+            }).catch(() => {});
+        }, 2000);
+    </script>
+    
 
     <script type="module" src="app.js"></script>
 </body>
